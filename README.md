@@ -26,7 +26,7 @@ library(rmdWidgets)
 ```
 
 ```{r}
-rmd_checkbox(c("Yes", "No"), selected = 1, label = "Hello?")
+rmd_checkbox(c("Yes", "No"), selected = 1, label = kableExtra::text_spec("Hello", italic = T))
 ```
 ````
 
