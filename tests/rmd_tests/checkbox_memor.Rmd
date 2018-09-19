@@ -1,8 +1,10 @@
 ---
-title: "Untitled"
-author: "Hao"
-date: "9/19/2018"
-output: pdf_document
+title: "Title"
+author: 
+- You Name
+- Second Author
+date: "`r Sys.Date()`"
+output: memor::pdf_memo
 ---
 
 ```{r setup, include=FALSE}

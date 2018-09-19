@@ -26,7 +26,7 @@ library(rmdWidgets)
 ```
 
 ```{r}
-rmd_checkbox(c("Yes", "No"), selected = 1)
+rmd_checkbox(c("Yes", "No"), selected = 1, label = "Hello?")
 ```
 ````
 
