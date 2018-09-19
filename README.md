@@ -30,3 +30,4 @@ rmd_checkbox(c("Yes", "No"), selected = 1, label = kableExtra::text_spec("Hello"
 ```
 ````
 
+![](docs/checkbox.png)
