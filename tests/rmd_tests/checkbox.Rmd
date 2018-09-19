@@ -1,0 +1,15 @@
+---
+title: "Untitled"
+author: "Hao"
+date: "9/19/2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rmdWidgets)
+```
+
+```{r}
+rmd_checkbox(c("Yes", "No"), selected = 1)
+```

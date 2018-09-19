@@ -1,0 +1,17 @@
+Package: rmdWidgets
+Title: Document Widgets for 'Rmarkdown'
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Hao",
+           family = "Zhu",
+           role = c("aut", "cre"),
+           email = "haozhu233@gmail.com")
+Description: Insert document widgets such as checkboxs to rmarkdown HTML/LaTeX 
+    documents.
+Imports:
+    knitr
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.0
