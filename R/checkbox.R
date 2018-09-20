@@ -5,8 +5,7 @@
 #' @param label Text string for label row. Default NULL.
 #' @param inline T/F for whether choices should be aligned inline. Default T.
 #' @param label_inline T/F for whether the label row should be placed inline 
-#' with the choices. Default T. If label_inline is set to be T, then inline 
-#' will be set to T as well.
+#' with the choices. Default T.
 #' @param format "latex" or "html". Controlled by global option 
 #' `rmdWidgets.format`
 #' 
@@ -15,7 +14,6 @@
 rmd_checkbox <- function(choices, selected = NULL, label = NULL, 
                          inline = T, label_inline = T, 
                          format = "latex") {
-  if (label_inline) inline <- T
   if (format == "latex") {
     return(
       rmd_checkbox_latex(choices, selected, label, inline, label_inline)

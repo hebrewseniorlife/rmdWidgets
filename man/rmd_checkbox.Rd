@@ -17,8 +17,7 @@ rmd_checkbox(choices, selected = NULL, label = NULL, inline = T,
 \item{inline}{T/F for whether choices should be aligned inline. Default T.}
 
 \item{label_inline}{T/F for whether the label row should be placed inline
-with the choices. Default T. If label_inline is set to be T, then inline
-will be set to T as well.}
+with the choices. Default T.}
 
 \item{format}{"latex" or "html". Controlled by global option
 \code{rmdWidgets.format}}
