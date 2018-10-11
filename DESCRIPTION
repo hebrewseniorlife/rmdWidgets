@@ -9,7 +9,8 @@ Authors@R:
 Description: Insert document widgets such as checkboxs to rmarkdown HTML/LaTeX 
     documents.
 Imports:
-    knitr
+    knitr, 
+    glue
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

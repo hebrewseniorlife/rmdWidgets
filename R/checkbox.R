@@ -10,6 +10,7 @@
 #' `rmdWidgets.format`
 #' 
 #' @importFrom knitr asis_output
+#' @import glue
 #' @export
 rmd_checkbox <- function(choices, selected = NULL, label = NULL, 
                          inline = T, label_inline = T, 
