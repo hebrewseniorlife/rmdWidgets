@@ -20,16 +20,27 @@ rmd_checkbox <- function(choices, selected = NULL, label = NULL,
       rmd_checkbox_latex(choices, selected, label, inline, label_inline)
     )
   }
+  if (format == "html") {
+    return(
+      rmd_checkbox_html(choices, selected, label, inline, label_inline)
+    )
+  }
 }
 
 rmd_checkbox_latex <- function(choices, selected, label, inline, label_inline) {
   if (!is.null(label)) {
-    after_label <- switch(label_inline + 1, "\n\n", "\\hfill")
+    after_label <- switch(label_inline + 1, "\n\n\\hfill", "\\hfill")
     label <- paste(label, after_label)
   }
+  if (is.null(label)) {
+    label <- paste(label, "\\hfill")
+  }
+  
   check_symbols <- rep("$\\square$", length(choices))
   check_symbols[selected] <- "$\\boxtimes$"
+  
   check_items <- paste(check_symbols, choices)
+  
   if (inline) {
     check_items <- paste(check_items, collapse = " ")
   } else {
@@ -37,3 +48,28 @@ rmd_checkbox_latex <- function(choices, selected, label, inline, label_inline) {
   }
   knitr::asis_output(paste(label, check_items))
 }
+
+rmd_checkbox_html <- function(choices, selected, label, inline, label_inline) {
+  if (!is.null(label)) {
+    after_label <- switch(label_inline + 1,
+                          paste('<p style="text-align:left;">', label, '<br><span style="float:right;">'),
+                          paste('<p style="text-align:left;">', label, '<span style="float:right;">'))
+    label <- paste(label, after_label)
+  }
+  if (is.null(label)) {
+    label <- paste(label, '<p style="text-align:left;"><span style="float:right;">')
+  }
+  
+  check_symbols <- rep('<input type="checkbox">', length(choices))
+  check_symbols[selected] <- '<input type="checkbox" checked="checked">'
+  
+  check_items <- paste(check_symbols, choices)
+  
+  if (inline) {
+    check_items <- paste(check_items, collapse = " ")
+  } else {
+    check_items <- paste(check_items, collapse = "<br>")
+  }
+  knitr::asis_output(paste(label, check_items, "</span></p>"))
+}
+
