@@ -34,11 +34,11 @@ rmd_textbox <- function(text, textcolor = "black",
 
 rmd_textbox_latex <- function(text, textcolor, title, titlecolor, titleback, 
                               backcolor, rounded, type) {
-  if (type == "info"|is.na(type)) {
+  if (type == "warning") {
     knitr::asis_output(paste0(
       glue("\\begin{tcolorbox}[width=\\textwidth,
                             colupper=(textcolor),
-                            title=\bcinfo(title),
+                            title=\\bcinterdit (title),
                             coltitle=(titlecolor),
                             colbacktitle=(titleback),
                             colback=(backcolor),
@@ -47,12 +47,11 @@ rmd_textbox_latex <- function(text, textcolor, title, titlecolor, titleback,
            \\end{tcolorbox}",
            .open = "(", .close = ")")
     ))
-  }
-  if (type == "warning") {
+  } else {
     knitr::asis_output(paste0(
       glue("\\begin{tcolorbox}[width=\\textwidth,
                             colupper=(textcolor),
-                            title=\bcinterdit(title),
+                            title=\\bcinfo (title),
                             coltitle=(titlecolor),
                             colbacktitle=(titleback),
                             colback=(backcolor),
@@ -66,49 +65,28 @@ rmd_textbox_latex <- function(text, textcolor, title, titlecolor, titleback,
 
 rmd_textbox_html <- function(text, textcolor, title, titlecolor, titleback, 
                               backcolor, rounded, type) {
-  icon <- if (type == "info"|is.na(type)) {
-    '<i class="material-icons">&#xe001;</i>'
-  }
-  
   icon <- if (type == "warning") {
     '&#9940;'
+  } else {
+    '&#10026;'
   }
-  
-  title <- if (type == "info"|is.na(type)) {
-    'Info:'
-  }
-  
   title <- if (type == "warning") {
     'Warning!'
+  } else {
+    'Info:'
   }
   
   knitr::asis_output(paste0(
     glue('<head>
-         <meta name="viewport" content="width=device-width, initial-scale=1">
-         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-         
          <style>
          .alert {
          padding: 20px;
-         background-color: yellow;
-         color: black;
-         }
-         .closebtn {
-         margin-left: 15px;
-         color: black;
-         font-weight: bold;
-         float: right;
-         font-size: 22px;
-         line-height: 20px;
-         cursor: pointer;
-         transition: 0.3s;
-         }
-        .closebtn:hover {
-         color: black;
+         background-color: [backcolor];
+         color: [textcolor];
          }
          </style>
          </head>
-         
+
          <body>
          <br>
          <div class="alert">

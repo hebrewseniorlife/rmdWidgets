@@ -44,9 +44,9 @@ rmd_checkbox_latex <- function(choices, selected, label, inline, label_inline) {
   if (inline) {
     check_items <- paste(check_items, collapse = " ")
   } else {
-    check_items <- paste(check_items, collapse = "\n\n")
+    check_items <- paste(check_items, collapse = "\n\n\\hfill")
   }
-  knitr::asis_output(paste(label, check_items))
+  knitr::asis_output(paste(label, check_items, "  "))
 }
 
 rmd_checkbox_html <- function(choices, selected, label, inline, label_inline) {
@@ -70,6 +70,6 @@ rmd_checkbox_html <- function(choices, selected, label, inline, label_inline) {
   } else {
     check_items <- paste(check_items, collapse = "<br>")
   }
-  knitr::asis_output(paste(label, check_items, "</span></p>"))
+  knitr::asis_output(paste(label, check_items, "</span></p><br>"))
 }
 
