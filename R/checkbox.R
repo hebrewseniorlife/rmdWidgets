@@ -28,48 +28,68 @@ rmd_checkbox <- function(choices, selected = NULL, label = NULL,
 }
 
 rmd_checkbox_latex <- function(choices, selected, label, inline, label_inline) {
-  if (!is.null(label)) {
-    after_label <- switch(label_inline + 1, "\n\n\\hfill", "\\hfill")
-    label <- paste(label, after_label)
-  }
-  if (is.null(label)) {
-    label <- paste(label, "\\hfill")
-  }
   
   check_symbols <- rep("$\\square$", length(choices))
   check_symbols[selected] <- "$\\boxtimes$"
-  
   check_items <- paste(check_symbols, choices)
   
   if (inline) {
+    
+    if (is.null(label)) {
+      label <- "\\hfill"
+    }
+    if (!is.null(label)) {
+      after_label <- switch(label_inline + 1, "\n\n\\hfill", "\\hfill")
+      label <- paste(label, after_label)
+    }
     check_items <- paste(check_items, collapse = " ")
+    
   } else {
+    
+    if (is.null(label)) {
+      label <- ""
+    }
+    if (!is.null(label)) {
+      after_label <- "\n\n"
+      label <- paste(label, after_label)
+    }
     check_items <- paste(check_items, collapse = "\n\n")
+    
   }
-  knitr::asis_output(paste(label, check_items))
+  knitr::asis_output(paste(label, check_items, "  "))
 }
 
 rmd_checkbox_html <- function(choices, selected, label, inline, label_inline) {
-  if (!is.null(label)) {
-    after_label <- switch(label_inline + 1,
-                          paste('<p style="text-align:left;">', label, '<br><span style="float:right;">'),
-                          paste('<p style="text-align:left;">', label, '<span style="float:right;">'))
-    label <- paste(label, after_label)
-  }
-  if (is.null(label)) {
-    label <- paste(label, '<p style="text-align:left;"><span style="float:right;">')
-  }
   
   check_symbols <- rep('<input type="checkbox">', length(choices))
   check_symbols[selected] <- '<input type="checkbox" checked="checked">'
-  
   check_items <- paste(check_symbols, choices)
   
   if (inline) {
+    
+    if (is.null(label)) {
+      label <- '<p style="text-align:left;"><span style="float:right;">'
+    }
+    if (!is.null(label)) {
+      label <- switch(label_inline + 1,
+                      paste('<p style="text-align:left;">', label, '<br><span style="float:right;">'),
+                      paste('<p style="text-align:left;">', label, '<span style="float:right;">'))
+    }
     check_items <- paste(check_items, collapse = " ")
+    
+    knitr::asis_output(paste(label, check_items, "</span></p><br>"))
   } else {
+    
+    if (is.null(label)) {
+      label <- '<p>'
+    }
+    if (!is.null(label)) {
+      after_label <- '<p><br>'
+      label <- paste(label, after_label)
+    }
     check_items <- paste(check_items, collapse = "<br>")
+    
+    knitr::asis_output(paste(label, check_items, "</p><br>"))
   }
-  knitr::asis_output(paste(label, check_items, "</span></p>"))
 }
 
