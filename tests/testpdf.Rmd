@@ -1,0 +1,59 @@
+---
+title: "Untitled"
+author: "Thea"
+header-includes:
+   - \usepackage{tcolorbox}
+   - \usepackage{graphicx}
+   - \usepackage{multicol}
+   - \usepackage{bclogo}
+   - \usepackage{inputenc}
+date: "10/24/2018"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(rmdWidgets)
+knitr::opts_chunk$set(echo = F)
+```
+
+## R Markdown
+
+### PDF: checkbox
+
+```{r}
+rmd_checkbox(c("Yes", "No", "DK"), 0, inline = F)
+```
+
+```{r}
+rmd_checkbox(c("Yes", "No", "DK"), 0, label = "")
+```
+
+```{r}
+rmd_checkbox(c("Yes", "No", "DK"), 1, label = "Label")
+```
+
+```{r}
+rmd_checkbox(c("Yes", "No", "DK"), c(2, 3), label = "Label not inline", label_inline = F)
+```
+
+```{r}
+rmd_checkbox(c("Yes", "No", "DK"), c(2, 3), label = "Choices not inline", inline = F)
+```
+
+### PDF: textbox
+
+```{r}
+
+rmd_textbox(text = "aaaaaaaa\nbbbbbbbbbbbbbbbbb\nccccc", title = "Some Info", rounded = "0", type = "info")
+
+rmd_textbox(text = "aaaaaaaaaaaaaaaaaaaaaaaaaaa", titleback = "gray", type = "warning")
+
+rmd_textbox(text = "aaaaaaaaaaaaaaaaaaaaa\n\naaaaaa", title = "A Warning", titleback = "gray", backcolor = "orange", type = "warning")
+
+rmd_textbox(text = "aaaaaaaaaa", title = "2333", titlecolor = "white", titleback = "black", rounded = "3", format = "latex")
+
+```
+

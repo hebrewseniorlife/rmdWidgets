@@ -1,0 +1,56 @@
+---
+title: "Untitled"
+author: "Thea"
+date: "10/26/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(rmdWidgets)
+knitr::opts_chunk$set(echo = F)
+```
+
+## R Markdown
+
+### HTML: checkbox
+
+```{r}
+rmd_checkbox(c("Yes", "No", "DK"), 0, inline = F, format = "html")
+```
+
+```{r}
+rmd_checkbox(c("Yes", "No", "DK"), 0, label = "", format = "html")
+```
+
+```{r}
+rmd_checkbox(c("Yes", "No", "DK"), 1, label = "Label", format = "html")
+```
+
+```{r}
+rmd_checkbox(c("Yes", "No", "DK"), c(2, 3), label = "Label not inline", label_inline = F, format = "html")
+```
+
+```{r}
+rmd_checkbox(c("Yes", "No", "DK"), c(2, 3), label = "Choices not inline", inline = F, format = "html")
+```
+
+### HTML: textbox
+
+```{r}
+rmd_textbox(text = "aaaaaaaaaa", backcolor = "white", textcolor = "red", format = "html")
+```
+
+```{r}
+rmd_textbox(text = "aaaaaaaa\nbbbbbbbbbbbbbbbbb\nccccc", backcolor = "gray", textcolor = "white", format = "html", type = "info")
+```
+
+```{r}
+rmd_textbox(text = "aaaaaaaaaaaaaaaaaaaaaaaaaaa", backcolor = "yellow", textcolor = "black", format = "html", type = "warning")
+```
+
+```{r}
+rmd_textbox(text = "aaaaaaaaaaaaaaaaaaaaa\n\naaaaaa", backcolor = "orange", textcolor = "white", format = "html", type = "warning")
+```
+
+
