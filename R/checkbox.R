@@ -77,7 +77,7 @@ rmd_checkbox_html <- function(choices, selected, label, inline, label_inline) {
     }
     check_items <- paste(check_items, collapse = " ")
     
-    knitr::asis_output(paste(label, check_items, "</span></p><br>"))
+    knitr::asis_output(paste(label, check_items, "</span></p>"))
   } else {
     
     if (is.null(label)) {
@@ -89,7 +89,7 @@ rmd_checkbox_html <- function(choices, selected, label, inline, label_inline) {
     }
     check_items <- paste(check_items, collapse = "<br>")
     
-    knitr::asis_output(paste(label, check_items, "</p><br>"))
+    knitr::asis_output(paste(label, check_items, "</p>"))
   }
 }
 
